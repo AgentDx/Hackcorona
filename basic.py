@@ -19,6 +19,17 @@ def generate_table(dataframe, max_rows=5):
         ])
     ])
 
+def dropDownType():
+
+    return dcc.Dropdown(
+        options=[
+            {'label': 'New York City', 'value': 'NYC'},
+            {'label': u'Montréal', 'value': 'MTL'},
+            {'label': 'San Francisco', 'value': 'SF'}
+        ],
+        multi=False,
+        style={'margin-left': 20, 'text-align': 'left', 'width': 200}
+    )
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
@@ -26,6 +37,7 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
 app.layout = html.Div(children=[
     html.H4(children='Recommendations', style={'text-align': 'center'}),
+    dropDownType(),
     generate_table(df)
 ])
 
